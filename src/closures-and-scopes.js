@@ -11,14 +11,16 @@
  * Can you spot, what's wrong with it? A test fixture is also available
  */
 
- function createFunctions(n) {
-   var callbacks = [];
+const createFunctions = (n) => {
+  let callbacks = [];
 
-   for (var i = 0; i < n; i++) {
-     callbacks.push(function () {
-       return i;
-     });
-   }
+  for (var i = 0; i < n; i++) {
+    const num = i;
+    callbacks.push(() => num);
+  }
 
-   return callbacks;
- }
+  return callbacks;
+};
+
+const callbacks = createFunctions(5);
+console.log(callbacks[1]());
