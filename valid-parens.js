@@ -15,9 +15,10 @@
 function validParentheses(parens) {
   const parensArr = parens.split("");
   if (parensArr.length % 2 !== 0) return false;
-
-  const firstHalf = parensArr.slice(0, parensArr.length / 2);
-  const secondHalf = parensArr.slice(parensArr.length / 2);
+  parensArr.map(paren => {
+      parensArr.find
+  });
   return firstHalf.length === secondHalf.length;
 }
+
 console.log(validParentheses("()()()((()))(("));
