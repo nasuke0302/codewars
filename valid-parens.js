@@ -12,13 +12,32 @@
  * 0 <= input.length <= 100
  */
 
-function validParentheses(parens) {
-  const parensArr = parens.split("");
-  if (parensArr.length % 2 !== 0) return false;
-  parensArr.map(paren => {
-      parensArr.find
-  });
-  return firstHalf.length === secondHalf.length;
-}
+/**
+ * )(()))
+ * )())
+ * ))
+ *
+ */
 
-console.log(validParentheses("()()()((()))(("));
+let lastStr = "";
+let count = 0;
+const validParentheses = parens => {
+  const parensArr = parens.split("()");
+  const joinedArr = parensArr.join("");
+
+  switch (joinedArr.length) {
+    case 0:
+      return true;
+    case 1:
+      return false;
+    default:
+      if (count >= 2 && lastStr === joinedArr) {
+        return false;
+      }
+      count++;
+      lastStr = joinedArr;
+      return validParentheses(joinedArr);
+  }
+};
+
+console.log(validParentheses("(())((()())())"));
