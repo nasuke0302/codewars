@@ -11,33 +11,31 @@
  * Constraints
  * 0 <= input.length <= 100
  */
-
 /**
- * )(()))
- * )())
- * ))
+ * ()()
  *
  */
 
-let lastStr = "";
+let lastStr;
 let count = 0;
-const validParentheses = parens => {
-  const parensArr = parens.split("()");
+function validParentheses (parens) {
+  const parensArr = parens.split("()").filter((paren) => paren !== "");
   const joinedArr = parensArr.join("");
-
   switch (joinedArr.length) {
     case 0:
       return true;
     case 1:
       return false;
     default:
-      if (count >= 2 && lastStr === joinedArr) {
+      console.log(count, lastStr, joinedArr)
+      if (count > 2 && lastStr === joinedArr) {
         return false;
       }
       count++;
+      console.log('here');
       lastStr = joinedArr;
       return validParentheses(joinedArr);
   }
 };
 
-console.log(validParentheses("(())((()())())"));
+console.log(validParentheses("(())"));
